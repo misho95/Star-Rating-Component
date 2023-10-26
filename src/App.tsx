@@ -9,6 +9,7 @@ function App() {
   const [edit, setEdit] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [icon, setIcon] = useState(0);
+  const [drag, setDrag] = useState(false);
 
   const result = [
     {
@@ -103,7 +104,15 @@ function App() {
         <h1 className="font-bold select-none text-center">
           How many stars would you give to our Inline Code Editor?
         </h1>
-        <div className="flex gap-6">
+        <div
+          className="flex gap-6"
+          onMouseDown={() => {
+            setDrag(true);
+          }}
+          onMouseUp={() => {
+            setDrag(false);
+          }}
+        >
           {stars.map((v) => {
             return (
               <StarComponent
@@ -114,6 +123,7 @@ function App() {
                 edit={edit}
                 setEdit={setEdit}
                 icon={icon}
+                drag={drag}
               />
             );
           })}
