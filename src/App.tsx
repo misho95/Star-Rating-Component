@@ -36,10 +36,10 @@ function App() {
     },
   ];
 
-  const changeStars = (e) => {
-    if (e.target.value > 0 && e.target.value < 10) {
+  const changeStars = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (+e.target.value > 0 && +e.target.value < 10) {
       const newArray = Array.from(
-        { length: e.target.value },
+        { length: parseInt(e.target.value, 10) },
         (_, index) => index + 1
       );
       setStars(newArray);
